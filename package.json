@@ -4,16 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/paullewisn/jest.console-mock.git"
   },
-  "author": "",
+  "author": "Paul-Lewis Nunn",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/paullewisn/jest.console-mock/issues"
   },
-  "homepage": "https://github.com/paullewisn/jest.console-mock#readme"
+  "homepage": "https://github.com/paullewisn/jest.console-mock#readme",
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "jest": "^24.5.0"
+  }
 }
