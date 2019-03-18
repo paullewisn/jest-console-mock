@@ -1,19 +1,27 @@
-const mockConsole = (messagesToIgnore, type) => {
-    if (type === 'info') return;
+const spies = {};
 
-    console[type || 'log'] = jest.fn((message) => {
-        if (!messagesToIgnore || messagesToIgnore.includes(message)) return;
-        console.info(message);
-    });
+/* eslint-disable no-console */
+const mockConsole = (messagesToIgnore, type) => {
+  if (type === 'info') return;
+
+  spies[type || 'log'] = jest.spyOn(global.console, type || 'log').mockImplementation((message) => {
+    if (!messagesToIgnore || messagesToIgnore.includes(message)) return;
+    console.info(message);
+  });
 };
 
-const unmockConsole = () => {
-    ['log', 'warn', 'error'].forEach((type) => {
-        console[type].mockRestore();
-    });
+const unmockConsole = (type) => {
+  spies[type || 'log'].mockRestore();
+};
+
+const unmockAllConsoles = () => {
+  Object.keys(spies).forEach((key) => {
+    spies[key].mockRestore();
+  });
 };
 
 module.exports = {
-    mockConsole,
-    unmockConsole,
+  mockConsole,
+  unmockConsole,
+  unmockAllConsoles,
 };

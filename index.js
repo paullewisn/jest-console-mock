@@ -1,6 +1,6 @@
-{ mockConsole, unmockConsole } = require ('./src/console-mock');
+const { mockConsole, unmockConsole } = require('./src/console-mock');
 
 module.exports = {
-    mockConsole,
-    unmockConsole
-}
+  mockConsole,
+  unmockConsole,
+};
